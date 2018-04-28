@@ -14,8 +14,14 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.3.3",
+    "firebase": "^4.12.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-fuse": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vue-touch": "^1.1.0",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
