@@ -17,7 +17,7 @@ const mutations = {
       ilistapreciosdef: '3',
       ordenarpor: { irecurso: 'asc' },
     });
-    const urlSecurity = '/2A46ED622/2000';
+    const urlSecurity = '/2B9AAB51E8/2000';
     const URL = `${urlHttp}${urlData}${urlSecurity}`;
     axios.get(URL).then((response) => {
       state.productsData = response.data.result[0].respuesta.datos;
@@ -29,7 +29,7 @@ const mutations = {
       irecurso: state.productPreviewData.irecurso,
       codimg: '1',
     });
-    const urlSecurity = '/2A46ED622/2000';
+    const urlSecurity = '/2B9AAB51E8/2000';
     const URL = `${urlHttp}${urlData}${urlSecurity}`;
     axios.get(URL).then((response) => {
     });

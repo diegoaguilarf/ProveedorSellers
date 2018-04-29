@@ -51,4 +51,7 @@ export default {
   font-size: 14px;
   color: gray;
 }
+.el-alert__content{
+  text-align: left;
+}
 </style>

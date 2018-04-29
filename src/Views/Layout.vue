@@ -65,7 +65,7 @@ export default {
   .wrapper{
     width: calc(100% + 100vw - 150px);
     position: relative;
-    left: calc(-100vw + 150px);
+    /* left: calc(-100vw + 150px); */
     display: flex;
     flex: none;
     overflow: hidden;

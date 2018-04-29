@@ -16,7 +16,7 @@ const mutations = {
       datosfiltro: { bcliente: 'T' },
       ordenarpor: { ntercero: 'asc' },
     });
-    const urlSecurity = '/2A46ED622/2000';
+    const urlSecurity = '/2B9AAB51E8/2000';
     const URL = `${urlHttp}${urlData}${urlSecurity}`;
     axios.get(URL).then((response) => {
       state.customersData = response.data.result[0].respuesta.datos;

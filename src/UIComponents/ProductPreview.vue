@@ -44,7 +44,7 @@ export default {
         irecurso: this.data.irecurso,
         codimg: '1',
       });
-      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}/2A46ED622/2000`;
+      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}/2B9AAB51E8/2000`;
     },
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
       this.$store.state.product.productPreviewData = null;
     },
     getStock() {
-      axios.get(`http://186.115.207.187:9000/datasnap/rest/TInventarios/GetSaldoFisicoProductoEnBodegas/{"irecurso": ${this.data.irecurso}}/2A46ED622/2000`).then((response) => {
+      axios.get(`http://186.115.207.187:9000/datasnap/rest/TInventarios/GetSaldoFisicoProductoEnBodegas/{"irecurso": ${this.data.irecurso}}/2B9AAB51E8/2000`).then((response) => {
         if (response.data.result[0].respuesta.datos[0]) {
           this.stock = response.data.result[0].respuesta.datos[0].qproducto;
         }

@@ -36,7 +36,7 @@ export default {
           infobasica: ['nrecurso'],
         },
       });
-      const URLsecurity = '/2A46ED622/2000';
+      const URLsecurity = '/2B9AAB51E8/2000';
       const URLwithData = `${URL}${data}${URLsecurity}`;
       axios.get(URLwithData).then((response) => {
         this.nrecurso = response.data.result[0].respuesta.datos.infobasica.nrecurso;

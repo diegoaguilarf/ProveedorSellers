@@ -1,9 +1,15 @@
 <template>
   <div class="FormLogin">
+    <img src="../../assets/logo.png" class="auth-layout-logo">
+    <el-alert
+      title="Autenticacion"
+      type="error"
+      description="Su contraseña o correo es incorrecto"
+      v-if="authError"
+      :closable="false"
+      show-icon>
+    </el-alert>
     <form v-on:submit.prevent class="form">
-      <img src="../../assets/logo.png" class="auth-layout-logo">
-      <h1 class="title-login">Bienvenido!</h1>
-      <p class="action-signup">¿Quieres ser un vendedor? <router-link to="/registrarse">Comunicate con nosotros</router-link></p>
       <div class="input-area first">
         <p class="nameItem">Correo electronico</p>
         <input class="input-email" type="email" placeholder="Correo electronico" v-model="email">
@@ -35,6 +41,7 @@ export default {
       email: '',
       password: '',
       greet: '',
+      authError: false,
       showInvalid: false,
       typePassword: 'password',
     };
@@ -56,7 +63,15 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store.commit('LOGIN', authData);
+      this.$store.dispatch('LOGIN', authData).then(() => {
+        router.push('/');
+        this.authError = false;
+      }).catch(() => {
+        this.authError = true;
+        setTimeout(() => {
+          this.authError = false;
+        }, 5000)
+      });
     },
     showPassword() {
       this.typePassword = 'text';

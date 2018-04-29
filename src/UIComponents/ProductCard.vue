@@ -18,7 +18,7 @@ export default {
         irecurso: this.data.irecurso,
         codimg: '1',
       });
-      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}/2A46ED622/2000`;
+      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}/2B9AAB51E8/2000`;
     },
   },
   filters: {

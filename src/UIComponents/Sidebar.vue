@@ -1,5 +1,5 @@
 <template>
-  <v-touch v-on:swipeleft="onSwipeLeft">
+  <!-- <v-touch v-on:swipeleft="onSwipeLeft">
     <div class="Sidebar">
       <div class="Sidebar_profile">
         <img :src="userData.photo_url" :alt="userData.name">
@@ -13,7 +13,7 @@
         <li class="menu_item" @click="logout"><i class="ti-power-off"></i>Salir</li>
       </ul>
     </div>
-  </v-touch>
+  </v-touch> -->
 </template>
 
 <script>

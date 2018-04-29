@@ -26,7 +26,7 @@ export default new Vuex.Store({
       customer: '',
       products: [],
     },
-    contapymeAuth: '/2A46ED622/2000',
+    contapymeAuth: '/2B9AAB51E8/2000',
   },
   mutations: {
     HANDLE_SIDEBAR(state) {
@@ -44,15 +44,21 @@ export default new Vuex.Store({
           state.userData = userData;
         });
     },
-    LOGIN(state, authData) {
-      firebase.auth().signInWithEmailAndPassword(authData.email, authData.password).then(() => {
-        router.push('/');
-      });
-    },
     LOGOUT() {
       firebase.auth().signOut().then(() => {
         router.push('/auth/login');
       });
+    },
+  },
+  actions: {
+    LOGIN(state, authData) {
+      return new Promise((resolve, reject) => {
+        firebase.auth().signInWithEmailAndPassword(authData.email, authData.password).then(() => {
+          resolve(true)
+        }).catch(() => {
+          reject(false)
+        });
+      })
     },
   },
   modules: {
