@@ -5,8 +5,8 @@ const state = {
   productPreviewData: null,
 };
 
-const mutations = {
-  GET_PRODUCTS(state) {
+const actions = {
+  GET_PRODUCTS({state, rootState}) {
     const urlHttp = 'http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetListaElemInv/';
     const urlData = JSON.stringify({
       datospagina: {
@@ -17,20 +17,18 @@ const mutations = {
       ilistapreciosdef: '3',
       ordenarpor: { irecurso: 'asc' },
     });
-    const urlSecurity = '/2B9AAB51E8/2000';
-    const URL = `${urlHttp}${urlData}${urlSecurity}`;
+    const URL = `${urlHttp}${urlData}${rootState.contapymeAuth}`;
     axios.get(URL).then((response) => {
       state.productsData = response.data.result[0].respuesta.datos;
     });
   },
-  GET_PRODUCT(state) {
+  GET_PRODUCT({state, rootState}) {
     const urlHttp = 'http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/';
     const urlData = JSON.stringify({
       irecurso: state.productPreviewData.irecurso,
       codimg: '1',
     });
-    const urlSecurity = '/2B9AAB51E8/2000';
-    const URL = `${urlHttp}${urlData}${urlSecurity}`;
+    const URL = `${urlHttp}${urlData}${rootState.contapymeAuth}`;
     axios.get(URL).then((response) => {
     });
   },
@@ -38,7 +36,7 @@ const mutations = {
 
 const module = {
   state,
-  mutations,
+  actions,
 };
 
 export default module;

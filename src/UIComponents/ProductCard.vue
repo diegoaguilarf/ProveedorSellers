@@ -13,12 +13,15 @@
 export default {
   props: ['data'],
   computed: {
+    contapymeAuth() {
+      return this.$store.state.contapymeAuth;
+    },
     getPhoto() {
       const objPhoto = JSON.stringify({
         irecurso: this.data.irecurso,
         codimg: '1',
       });
-      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}/2B9AAB51E8/2000`;
+      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}${this.contapymeAuth}`;
     },
   },
   filters: {

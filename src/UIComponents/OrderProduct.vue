@@ -23,6 +23,9 @@ export default {
     };
   },
   computed: {
+    contapymeAuth() {
+      return this.$store.state.contapymeAuth;
+    },
     mvrtotal() {
       return (parseInt(this.product.qrecurso) * parseInt(this.product.mprecio));
     },
@@ -36,8 +39,7 @@ export default {
           infobasica: ['nrecurso'],
         },
       });
-      const URLsecurity = '/2B9AAB51E8/2000';
-      const URLwithData = `${URL}${data}${URLsecurity}`;
+      const URLwithData = `${URL}${data}${this.contapymeAuth}`;
       axios.get(URLwithData).then((response) => {
         this.nrecurso = response.data.result[0].respuesta.datos.infobasica.nrecurso;
       });

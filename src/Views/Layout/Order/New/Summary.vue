@@ -37,22 +37,22 @@
         Lista de productos
       </header>
       <ul>
-        <OrderProduct :product="product" v-for="product in orderData.listaproductos" />
+        <OrderProduct :product="product" v-for="product in orderData.oprdata.listaproductos" />
       </ul>
     </div>
     <div class="card order_area">
       <ul>
         <li>
           <label for="">Subtotal:</label>
-          <!-- <p>{{ orderData.liquidacion.parcial }}</p> -->
+          <p>{{ orderData.oprdata.liquidacion.parcial }}</p>
         </li>
         <li>
           <label for="">IVA:</label>
-          <!-- <p>{{ orderData.liquidacion.iva }}</p> -->
+          <p>{{ orderData.oprdata.liquidacion.iva }}</p>
         </li>
         <li>
           <label for="">Total</label>
-          <!-- <p>{{ orderData.liquidacion.total }}</p> -->
+          <p>{{ orderData.oprdata.liquidacion.total }}</p>
         </li>
       </ul>
     </div>
@@ -60,7 +60,10 @@
 </template>
 
 <script>
+import OrderProduct from '../../../../UIComponents/OrderProduct.vue';
+
 export default {
+  components: { OrderProduct },
   created() {
     if (!this.$store.state.order.oprdata.datosprincipales.init) {
       this.$router.push('/new/customer');

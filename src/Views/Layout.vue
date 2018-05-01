@@ -27,9 +27,9 @@ import SaveOrder from '../UIComponents/SaveOrder.vue';
 export default {
   components: { Sidebar, Header, Tabs, ProductPreview, SummaryOrder, SaveOrder },
   created() {
-    this.$store.commit('GET_PRODUCTS');
-    this.$store.commit('GET_CUSTOMERS');
-    this.$store.commit('GET_ORDERS');
+    this.$store.dispatch('GET_PRODUCTS');
+    this.$store.dispatch('GET_CUSTOMERS');
+    this.$store.dispatch('GET_ORDERS');
   },
   mounted() {
     this.getHeight();

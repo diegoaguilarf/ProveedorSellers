@@ -69,7 +69,7 @@ export default {
   methods: {
     addCustomer(customer) {
       this.$store.commit('ADD_BACK', this.$route);
-      this.$store.commit('ADD_ORDERCUSTOMER', customer);
+      this.$store.dispatch('ADD_ORDERCUSTOMER', customer);
       this.$router.push('/new/products');
     },
   },

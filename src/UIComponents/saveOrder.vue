@@ -11,7 +11,8 @@
 export default {
   methods: {
     saveOrder() {
-      this.$store.commit('SAVE_ORDER');
+      this.$store.dispatch('SAVE_ORDER');
+      this.$router.push('/')
     },
   },
 };
@@ -21,6 +22,7 @@ export default {
   .save_order{
     position: absolute;
     bottom: 0;
+    left: 0;
     right: 0;
     width: 100vw;
     height: 50px;

@@ -41,6 +41,7 @@ export default {
 <style lang="css">
   .summary_order{
     position: absolute;
+    left: 0;
     bottom: 0;
     right: 0;
     width: 100vw;

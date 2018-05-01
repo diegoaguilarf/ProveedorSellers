@@ -26,7 +26,7 @@ import axios from 'axios';
 export default {
   components: { QuantityCount },
   created() {
-    this.$store.commit('GET_PRODUCT');
+    this.$store.dispatch('GET_PRODUCT');
     this.getStock();
   },
   data() {
@@ -39,12 +39,15 @@ export default {
     data() {
       return this.$store.state.product.productPreviewData;
     },
+    contapymeAuth() {
+      return this.$store.state.contapymeAuth;
+    },
     photo() {
       const objPhoto = JSON.stringify({
         irecurso: this.data.irecurso,
         codimg: '1',
       });
-      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}/2B9AAB51E8/2000`;
+      return `http://186.115.207.187:9000/datasnap/rest/TCatElemInv/GetFotoElemInv/${objPhoto}${this.contapymeAuth}`;
     },
   },
   methods: {
@@ -52,7 +55,7 @@ export default {
       this.$store.state.product.productPreviewData = null;
     },
     getStock() {
-      axios.get(`http://186.115.207.187:9000/datasnap/rest/TInventarios/GetSaldoFisicoProductoEnBodegas/{"irecurso": ${this.data.irecurso}}/2B9AAB51E8/2000`).then((response) => {
+      axios.get(`http://186.115.207.187:9000/datasnap/rest/TInventarios/GetSaldoFisicoProductoEnBodegas/{"irecurso": ${this.data.irecurso}}${this.contapymeAuth}`).then((response) => {
         if (response.data.result[0].respuesta.datos[0]) {
           this.stock = response.data.result[0].respuesta.datos[0].qproducto;
         }

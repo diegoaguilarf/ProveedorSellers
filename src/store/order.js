@@ -96,19 +96,17 @@ const state = {
   },
 };
 
-const mutations = {
-  GET_ORDERS(state) {
+const actions = {
+  GET_ORDERS({state, rootState}) {
     const URL = 'http://186.115.207.187:9000/datasnap/rest/TCatOperaciones/GetListaOperaciones/';
-    const URLsecurity = '/2B9AAB51E8/2000';
     const data = JSON.stringify(state.getOrdersConfig);
-    const URLwithData = `${URL}${data}${URLsecurity}`;
+    const URLwithData = `${URL}${data}${rootState.contapymeAuth}`;
     axios.get(URLwithData).then((response) => {
       state.ordersData = response.data.result[0].respuesta.datos;
     });
   },
-  GET_ORDER(state, inumoper) {
+  GET_ORDER({state, rootState}, inumoper) {
     const URL = 'http://186.115.207.187:9000/datasnap/rest/TCatOperaciones/DoExecuteOprAction/';
-    const URLsecurity = '/2B9AAB51E8/2000';
     const data = JSON.stringify({
       accion: 'LOAD',
       operaciones: [
@@ -118,16 +116,16 @@ const mutations = {
         },
       ],
     });
-    const URLwithData = `${URL}${data}${URLsecurity}`;
+    const URLwithData = `${URL}${data}${rootState.contapymeAuth}`;
     axios.get(URLwithData).then((response) => {
       state.orderData = response.data.result[0].respuesta.datos;
     });
   },
-  ADD_ORDERCUSTOMER(state, data) {
+  ADD_ORDERCUSTOMER({state}, data) {
     state.oprdata.datosprincipales.init = data.init;
     state.customerOrderData = data;
   },
-  CALCULATE_LIQUIDACION(state) {
+  CALCULATE_LIQUIDACION({state}) {
     state.oprdata.liquidacion.parcial = 0;
     state.oprdata.liquidacion.iva = 0;
     state.oprdata.liquidacion.total = 0;
@@ -141,29 +139,24 @@ const mutations = {
     state.oprdata.liquidacion.iva = state.oprdata.liquidacion.iva.toString();
     state.oprdata.liquidacion.total = state.oprdata.liquidacion.total.toString();
   },
-  SAVE_ORDER(state) {
+  SAVE_ORDER({state, rootState}) {
     const URL = 'http://186.115.207.187:9000/datasnap/rest/TCatOperaciones/DoExecuteOprAction/';
-    const URLsecurity = '/2B9AAB51E8/2000';
     const data = JSON.stringify({
       accion: state.accion,
       operaciones: state.operaciones,
       oprdata: state.oprdata,
     });
-    const URLwithData = `${URL}${data}${URLsecurity}`;
+    const URLwithData = `${URL}${data}${rootState.contapymeAuth}`;
     axios.get(URLwithData);
   },
-};
-
-const actions = {
-  ADD_ORDERPRODUCT({ commit, state }, data) {
+  ADD_ORDERPRODUCT({ commit, state, dispatch }, data) {
     state.oprdata.listaproductos.push(data);
-    commit('CALCULATE_LIQUIDACION');
+    dispatch('CALCULATE_LIQUIDACION');
   },
 };
 
 const order = {
   state,
-  mutations,
   actions,
 };
 

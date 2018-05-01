@@ -4,8 +4,8 @@ const state = {
   customersData: [],
 };
 
-const mutations = {
-  GET_CUSTOMERS(state, stateRoot) {
+const actions = {
+  GET_CUSTOMERS({state, rootState}) {
     const urlHttp = 'http://186.115.207.187:9000/datasnap/rest/TCatTerceros/GetListaTerceros/';
     const urlData = JSON.stringify({
       datospagina: {
@@ -13,11 +13,10 @@ const mutations = {
         pagina: 1,
       },
       camposderetorno: ['init', 'ntercero', 'napellido'],
-      datosfiltro: { bcliente: 'T' },
+      
       ordenarpor: { ntercero: 'asc' },
     });
-    const urlSecurity = '/2B9AAB51E8/2000';
-    const URL = `${urlHttp}${urlData}${urlSecurity}`;
+    const URL = `${urlHttp}${urlData}${rootState.contapymeAuth}`;
     axios.get(URL).then((response) => {
       state.customersData = response.data.result[0].respuesta.datos;
     });
@@ -26,7 +25,7 @@ const mutations = {
 
 const module = {
   state,
-  mutations,
+  actions,
 };
 
 export default module;

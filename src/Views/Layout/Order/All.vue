@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getOrder(order) {
-      this.$store.commit('GET_ORDER', order.inumoper);
+      this.$store.dispatch('GET_ORDER', order.inumoper);
       this.$router.push('/order');
     },
   },

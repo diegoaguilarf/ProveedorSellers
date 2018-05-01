@@ -16,7 +16,7 @@ import axios from 'axios';
 export default {
   name: 'Product',
   mounted() {
-    this.$store.commit('GET_PRODUCTS');
+    this.$store.dispatch('GET_PRODUCTS');
   },
   computed: {
     productsData() {

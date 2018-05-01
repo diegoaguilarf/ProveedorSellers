@@ -11,7 +11,7 @@
 export default {
   name: 'Customers',
   created() {
-    this.$store.commit('GET_CUSTOMERS');
+    this.$store.dispatch('GET_CUSTOMERS');
   },
   computed: {
     customersData() {
