@@ -22,7 +22,7 @@ import Header from '../UIComponents/Header.vue';
 import Sidebar from '../UIComponents/Sidebar.vue';
 import ProductPreview from '../UIComponents/ProductPreview.vue';
 import SummaryOrder from '../UIComponents/SummaryOrder.vue';
-import SaveOrder from '../UIComponents/SaveOrder.vue';
+import SaveOrder from '../UIComponents/saveOrder.vue';
 
 export default {
   components: { Sidebar, Header, Tabs, ProductPreview, SummaryOrder, SaveOrder },
