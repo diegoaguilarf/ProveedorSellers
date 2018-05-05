@@ -64,7 +64,7 @@ export default {
         password: this.password,
       };
       this.$store.dispatch('LOGIN', authData).then(() => {
-        router.push('/');
+        this.$router.push('/');
         this.authError = false;
       }).catch(() => {
         this.authError = true;
