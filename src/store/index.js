@@ -26,7 +26,7 @@ export default new Vuex.Store({
       customer: '',
       products: [],
     },
-    contapymeAuth: '/1A807880EF/2000',
+    contapymeAuth: '/3955AEC3B/2000',
   },
   mutations: {
     HANDLE_SIDEBAR(state) {
