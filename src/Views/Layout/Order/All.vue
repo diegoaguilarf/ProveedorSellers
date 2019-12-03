@@ -32,6 +32,12 @@ export default {
     },
   },
   methods: {
+    uploadPhoto() {
+      let message = ''
+      firebase.storage().ref().putString(message).then(function(snapshot) {
+        console.log('Uploaded a raw string!');
+      });
+    },
     getOrder(order) {
       this.$store.dispatch('GET_ORDER', order.inumoper);
       this.$router.push('/order');

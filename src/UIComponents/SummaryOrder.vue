@@ -1,12 +1,7 @@
 <template>
   <div class="summary_order">
-    <div class="summary_order_content">
-      <p class="summary_customer_name">{{ orderData.ntercero | capitalize}} {{ orderData.napellido | capitalize}}</p>
-      <p class="total">{{ liquidacion.total }}</p>
-    </div>
     <button class="action show_summary-action" @click="goSummary">
       <p>Ver resumen</p>
-      <p>resumen</p>
     </button>
   </div>
 </template>
@@ -78,12 +73,4 @@ export default {
   .show_summary-action p:nth-child(1){
     display: flex;
   }
-  @media(max-width: 350px){
-    .show_summary-action p:nth-child(1){
-      display: none;
-    }
-    .show_summary-action p:nth-child(2){
-      display: flex;
-    }
-  };
 </style>

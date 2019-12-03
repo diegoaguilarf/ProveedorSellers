@@ -13,7 +13,6 @@ const actions = {
         pagina: 1,
       },
       camposderetorno: ['init', 'ntercero', 'napellido'],
-      
       ordenarpor: { ntercero: 'asc' },
     });
     const URL = `${urlHttp}${urlData}${rootState.contapymeAuth}`;
